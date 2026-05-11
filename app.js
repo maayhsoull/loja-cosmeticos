@@ -74,12 +74,25 @@ function criarCard(produto) {
     }
 }
 
+//função criada para traduzir a pesquisa em ingles e realizar a busca na api.
+//utilizando consulta em api
+async function tradutor(palavra) {
+
+    const resposta = await fetch(`https://api.mymemory.translated.net/get?q=${palavra}&langpair=pt|en`)
+
+    const dados = await resposta.json()
+
+    return dados.responseData.translatedText.toLowerCase()
+}
 
 //função que busca o produto na api com base em uma palavra de pesquisa
-function buscarProduto() {
+async function buscarProduto() {
 
     //usa o campo de pesquisa do html 
     const pesquisa = inputPesquisar.value.toLowerCase()
+
+    //consulta a palavra da pesquisa no tradutor pois a api inteira é em ingles 
+    const pesquisaEmIngles = await tradutor(pesquisa)
 
     //variável para verificar se o produto foi encontrado 
     let produtoEncontrado = false
@@ -94,8 +107,8 @@ function buscarProduto() {
         if (produto.image_link != '' &&
             (
                 //verifica se o texto pesquisado existe no nome e no tipo de produto 
-                produto.name.toLowerCase().includes(pesquisa) ||
-                produto.product_type.toLowerCase().includes(pesquisa)
+                produto.name.toLowerCase().includes(pesquisaEmIngles) ||
+                produto.product_type.toLowerCase().includes(pesquisaEmIngles)
             )
         ) {
             //caso encontre o produto ele cria o card 
