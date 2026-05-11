@@ -163,7 +163,7 @@ header{
     margin-top: 53px;
 }
 
-.card-1{
+.card-1-skincare,.card-1-maquiagem,.card-1-cabelos{
     height: 310px;
     width: 270px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -179,7 +179,15 @@ header{
     font-size: 15px;
 }
 
-.card-1:hover{
+.card-1-skincare:hover{
+    box-shadow: 4px 4px 20px #646464;
+    transform: scale(1.1);
+}
+.card-1-maquiagem:hover{
+    box-shadow: 4px 4px 20px #646464;
+    transform: scale(1.1);
+}
+.card-1-cabelos:hover{
     box-shadow: 4px 4px 20px #646464;
     transform: scale(1.1);
 }
@@ -212,6 +220,11 @@ header{
     margin-top: 53px;
 }
 
+.produtos img{
+    height: 235px;
+    width: 227px;
+}
+
 .botao-adicionar{
     width: 170px;
     height: 39px;
@@ -225,10 +238,14 @@ header{
     border: none;
 }
 
+.botao-adicionar img{
+    height: 36px;
+    width: 26px;
+}
+
 .banner-2{
-    display: flex;
+    position: relative;
     width: 100%;
-    max-height: 320px;
     overflow: hidden;
     font-family: "Inria Serif", serif;
 }
@@ -241,12 +258,13 @@ header{
 
 .cadastro-novidades{
     position: absolute;
-    width: 1250px;
-    display: flex;
-    top: 215%;
+    top: 50%;
     left: 8%;
     transform: translateY(-50%);
+    width: 65%;
+    display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .novidades-texto-1{
@@ -259,7 +277,7 @@ header{
 }
 
 .input-cadastrar{
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
 }
@@ -318,6 +336,19 @@ header{
     font-family: "Inria Serif", serif;
     color:#575252;
 }
+
+.nao-encontrado{
+    /* utilizado "/" para sinalizar inicio e fim pois assim ele ira ocupar uma linha toda  */
+    grid-column: 1 / -1;
+    font-family: "Inria Serif", serif;
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 30px;
+    margin-top: 40px;
+}
 footer{
     display: flex;
     justify-content: center;
@@ -328,5 +359,4 @@ footer{
     font-family: "Inria Serif", serif;
 
 }
-
 
