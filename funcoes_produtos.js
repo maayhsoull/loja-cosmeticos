@@ -76,13 +76,96 @@ function criarCard(produto) {
 
 //função criada para traduzir a pesquisa em ingles e realizar a busca na api.
 //utilizando consulta em api
-async function tradutor(palavra) {
+// async function tradutor(palavra) {
 
-    const resposta = await fetch(`https://api.mymemory.translated.net/get?q=${palavra}&langpair=pt|en`)
+//     const resposta = await fetch(`https://api.mymemory.translated.net/get?q=${palavra}&langpair=pt|en`)
 
-    const dados = await resposta.json()
+//     const dados = await resposta.json()
 
-    return dados.responseData.translatedText.toLowerCase()
+//     return dados.responseData.translatedText.toLowerCase()
+// }
+//esta função ignora algumas palavras e não retorna todos os produtos 
+
+
+// variável criada para armazenar traduções das palavras mais utilizadas 
+const traducoes = {
+    // rosto
+    base: 'foundation',
+    corretivo: 'concealer',
+    po: 'powder',
+    'pó': 'powder',
+    bronzer: 'bronzer',
+    contorno: 'bronzer',
+    blush: 'blush',
+
+    // olhos
+    delineador: 'eyeliner',
+    lapis: 'pencil',
+    'lápis': 'pencil',
+    sombra: 'eyeshadow',
+    rimel: 'mascara',
+    'rímel': 'mascara',
+    mascara: 'mascara',
+    'máscara': 'mascara',
+
+    // boca
+    batom: 'lipstick',
+    gloss: 'lip gloss',
+    'brilho labial': 'lip gloss',
+    labial: 'lip',
+    labios: 'lip',
+    'lábios': 'lip',
+
+    // pele/cuidados
+    hidratante: 'moisturizer',
+    skincare: 'skincare',
+    vegano: 'vegan',
+    organico: 'organic',
+    'orgânico': 'organic',
+    natural: 'natural',
+
+    // outras palavreas da API
+    liquido: 'liquid',
+    'líquido': 'liquid',
+    creme: 'cream',
+    mineral: 'mineral'
+}
+
+//pega todas as palavras do objeto traducoes
+//tipo: batom, gloss, lapis...
+const palavras = Object.keys(traducoes)
+
+//cria a configuração da pesquisa aproximada
+const fuse = new Fuse(palavras, {
+
+    //quanto menor o valor mais precisa será a pesquisa
+    //0.4 permite pequenos erros de escrita
+    threshold: 0.4
+})
+
+//função para traduzir e corrigir palavras parecidas 
+function traduzirPesquisa(pesquisaUsuario) {
+
+    //transforma a pesquisa em minúsculo
+    let pesquisa = pesquisaUsuario.toLowerCase()
+
+    //realiza a pesquisa aproximada nas palavras do objeto traducoes
+    let resultado = fuse.search(pesquisa)
+
+    //verifica se encontrou alguma palavra parecida
+    if (resultado.length > 0) {
+
+        //pega a primeira palavra encontrada
+        let palavra = resultado[0].item
+
+        //retorna a tradução da palavra encontrada
+        //ex: lipstick
+        return traducoes[palavra]
+    }
+
+    //caso não encontre nenhuma tradução
+    //retorna a própria pesquisa do usuário
+    return pesquisa
 }
 
 //função que busca o produto na api com base em uma palavra de pesquisa
@@ -92,7 +175,7 @@ async function buscarProduto() {
     const pesquisa = inputPesquisar.value.toLowerCase()
 
     //consulta a palavra da pesquisa no tradutor pois a api inteira é em ingles 
-    const pesquisaEmIngles = await tradutor(pesquisa)
+    const pesquisaEmIngles = traduzirPesquisa(pesquisa)
 
     //variável para verificar se o produto foi encontrado 
     let produtoEncontrado = false
