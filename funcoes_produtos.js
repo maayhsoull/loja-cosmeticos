@@ -118,7 +118,7 @@ const traducoes = {
 
     // pele/cuidados
     hidratante: 'moisturizer',
-    skincare: 'skincare',
+    skincare: 'serum',
     vegano: 'vegan',
     organico: 'organic',
     'orgânico': 'organic',
@@ -128,7 +128,8 @@ const traducoes = {
     liquido: 'liquid',
     'líquido': 'liquid',
     creme: 'cream',
-    mineral: 'mineral'
+    mineral: 'mineral',
+
 }
 
 //pega todas as palavras do objeto traducoes
@@ -174,6 +175,14 @@ async function buscarProduto() {
     //usa o campo de pesquisa do html 
     const pesquisa = inputPesquisar.value.toLowerCase()
 
+    const botaoPesquisar = document.querySelector('.img-pesquisar')
+
+    botaoPesquisar.addEventListener('click', function () {
+
+        const pesquisa = document.querySelector('.input-pesquisar').value.toLowerCase()
+
+    })
+
     //consulta a palavra da pesquisa no tradutor pois a api inteira é em ingles 
     const pesquisaEmIngles = traduzirPesquisa(pesquisa)
 
@@ -207,7 +216,27 @@ async function buscarProduto() {
         mensagem.textContent = 'Nenhum produto encontrado.'
         containerProdutos.appendChild(mensagem)
     }
+
+
+    //função para scrolar automaticamente quando a pesquisa é realizada     
+    const secaoProdutos = document.querySelector('.container-produtos')
+
+    secaoProdutos.scrollIntoView({
+        behavior: 'smooth'
+    })
+
 }
+
+//realiza a pesquisa através do enter
+//pega o input de pesquisa, através da tecla pressionada guarda as informações sobre a tecla
+inputPesquisar.addEventListener('keydown', function (event) {
+
+    //se a tecla pressionada for enter entra na função buscar produto
+    if (event.key == 'Enter') {
+
+        buscarProduto()
+    }
+})
 
 botaoPesquisar.addEventListener('click', buscarProduto)
 

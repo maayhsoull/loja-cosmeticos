@@ -23,19 +23,23 @@ header{
     align-items: center;
 }
 
+.imagem_menu{
+    padding: 0px 0px 0px 50px
+}
+
 .menu{
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 92px;
+    height: 92px;    
 }
 
 .opcoes-menu{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 393px;
+    width: 30vw;
     font-family: "Inter", sans-serif;
     font-size: 14px;
 }
@@ -43,9 +47,7 @@ header{
 .pesquisar{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 0px 25px 0px 0px;
-    
+    align-items: center;    
 }
 
 .input-pesquisar{
@@ -53,6 +55,7 @@ header{
     height: 44px;
     border-radius: 5px;
     border: none;
+    padding-left: 12px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
@@ -61,9 +64,12 @@ header{
     width: 44px;
     height: 34px;
     background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .banner-1{
+    position: relative;
     display: flex;
     width: 100%;
     max-height: 545px;
@@ -82,10 +88,11 @@ header{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    top: 30%;
+    top: 28%;
     left: 8%;
     transform: translateY(-50%);
-    font-size: 60px;
+    font-size: clamp(28px, 6vw, 60px);
+    line-height: 1.1;
 }
 
 .texto-banner-1-rosa{
@@ -97,10 +104,10 @@ header{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    top: 44%;
+    top: 60%;
     left: 8%;
     transform: translateY(-50%);
-    font-size: 21px;
+    font-size: clamp(14px, 2vw, 21px);
     color: #575252;
 }
 .texto-2{
@@ -156,16 +163,18 @@ header{
 .categorias{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    align-items: center;
-    width: 53vw;
-    height: 310px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%;
+    height: auto;
     margin-top: 53px;
 }
 
-.card-1-skincare,.card-1-maquiagem,.card-1-cabelos{
+.card-1-skincare, .card-1-maquiagem, .card-1-cabelos{
     height: 310px;
     width: 270px;
+    flex-shrink: 0;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -226,8 +235,8 @@ header{
 }
 
 .botao-adicionar{
-    width: 170px;
-    height: 39px;
+    width: 140px;
+    height: 35px;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -302,8 +311,9 @@ header{
 
 .info-atendimento{
     display: flex;
-    justify-content: space-around;
-    gap: 600px;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
 }
 
 
