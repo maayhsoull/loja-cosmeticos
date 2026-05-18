@@ -23,13 +23,9 @@ header{
     align-items: center;
 }
 
-.imagem_menu{
-    padding: 0px 0px 0px 50px
-}
-
 .menu{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
     height: 92px;    
@@ -51,8 +47,8 @@ header{
 }
 
 .input-pesquisar{
-    width: 257px;
-    height: 44px;
+    width: 12vw;
+    height: 5vh;
     border-radius: 5px;
     border: none;
     padding-left: 12px;
@@ -125,18 +121,23 @@ header{
 
 .card{
     background-color: #FDE2F5;
-    width: 1500px;
-    height: 128px;
+    width: 80vw;
+    height: 15vh;
     display: flex;
     justify-content: space-around;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.card img{
+    width: 3.4vw;
+    height: 9vh;
 }
 
 .bloco-1{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 238.37px;
+    width: 16%;
 
 }
 
@@ -312,8 +313,8 @@ header{
 .info-atendimento{
     display: flex;
     justify-content: center;
-    gap: 80px;
-    flex-wrap: wrap;
+    gap: 42%;
+    /* flex-wrap: wrap; */
 }
 
 
@@ -348,7 +349,7 @@ header{
 }
 
 .nao-encontrado{
-    /* utilizado "/" para sinalizar inicio e fim pois assim ele ira ocupar uma linha toda  */
+    /* utilizado "/" para sinalizar inicio e fim pois assim ele ira ocupar uma linha toda */
     grid-column: 1 / -1;
     font-family: "Inria Serif", serif;
     display: flex;
@@ -356,9 +357,9 @@ header{
     justify-content: center;
     align-items: center;
     width: 100%;
-    font-size: 30px;
     margin-top: 40px;
 }
+
 footer{
     display: flex;
     justify-content: center;
